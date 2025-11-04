@@ -1,47 +1,47 @@
-// src/context/AuthContext.jsx
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
+import axios from "axios"; // make sure axios is installed
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+  const [user, setUser] = useState(null);
 
   const login = async (email, password) => {
-    const res = await fetch('http://localhost:5050/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const { data } = await axios.post("http://localhost:5050/api/auth/login", {
+        email,
+        password,
+      });
 
-    if (!res.ok) throw new Error('Login failed');
-
-    const data = await res.json();
-    setUser(data);
-    localStorage.setItem('user', JSON.stringify(data));
-    return data;
+      setUser(data);
+      localStorage.setItem("user", JSON.stringify(data));
+      return data;
+    } catch (err) {
+      console.error("Login failed:", err.response?.data || err.message);
+      throw err;
+    }
   };
 
   const signup = async (username, email, password) => {
-    const res = await fetch('http://localhost:5050/api/auth/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password }),
-    });
+    try {
+      const { data } = await axios.post("http://localhost:5050/api/auth/signup", {
+        username,
+        email,
+        password,
+      });
 
-    if (!res.ok) throw new Error('Signup failed');
-
-    const data = await res.json();
-    setUser(data);
-    localStorage.setItem('user', JSON.stringify(data));
-    return data;
+      setUser(data);
+      localStorage.setItem("user", JSON.stringify(data));
+      return data;
+    } catch (err) {
+      console.error("Signup failed:", err.response?.data || err.message);
+      throw err;
+    }
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
   return (

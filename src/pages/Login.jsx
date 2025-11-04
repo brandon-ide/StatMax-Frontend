@@ -1,50 +1,44 @@
-import { useState, useContext } from 'react';
-import { loginUser } from '../api/api';
-import { AuthProvider } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext.jsx";
 
 const Login = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [message, setMessage] = useState('');
-  const { setToken } = useContext(AuthProvider);
+  const { login } = useAuth();
   const navigate = useNavigate();
-
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await loginUser(form);
-      setToken(res.data.token);
-      setMessage('Login successful!');
-      navigate('/dashboard');
+      await login(email, password);
+      navigate("/dashboard");
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Login failed.');
+      alert("Login failed. Check console for details.");
     }
   };
 
   return (
-    <div className="page-container">
-      <h2>Login</h2>
+    <div>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input
-          name="email"
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
         />
         <input
-          name="password"
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
         />
         <button type="submit">Login</button>
       </form>
-      {message && <p>{message}</p>}
+
+      <p>Don't have an account?</p>
+      <button onClick={() => navigate("/signup")}>Sign Up</button>
     </div>
   );
 };

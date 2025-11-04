@@ -1,4 +1,3 @@
-// src/pages/SignupPage.jsx
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';

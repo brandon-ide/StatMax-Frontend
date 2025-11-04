@@ -1,52 +1,56 @@
-import { useState } from 'react';
-import { signupUser } from '../api/api';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext.jsx";
 
-const Signup = () => {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-  const [message, setMessage] = useState('');
-
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+const SignupPage = () => {
+  const { signup } = useAuth();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signupUser(form);
-      setMessage('Signup successful! You can now log in.');
+      await signup(username, email, password);
+      navigate("/dashboard");
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Signup failed.');
+      alert("Signup failed. Check console for details.");
     }
   };
 
   return (
-    <div className="page-container">
-      <h2>Sign Up</h2>
+    <div>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <input
-          name="username"
+          type="text"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
-          value={form.username}
-          onChange={handleChange}
+          autoComplete="username"
         />
         <input
-          name="email"
           type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
+          autoComplete="email"
         />
         <input
-          name="password"
           type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
+          autoComplete="new-password"
         />
         <button type="submit">Sign Up</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default Signup;
+export default SignupPage;
