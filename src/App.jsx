@@ -1,19 +1,23 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Signup from './pages/Signup';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import NewSession from './pages/NewSession';
+import DrillSession from './pages/DrillSession';
+import Stats from './pages/Stats';
 import ProtectedRoute from './components/ProtectedRoute';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* Protected Routes */}
         <Route
-          path="/dashboard"
+          path="/"
           element={
             <ProtectedRoute>
               <Dashboard />
@@ -21,16 +25,33 @@ function App() {
           }
         />
         <Route
-          path="/record"
+          path="/new-session"
           element={
             <ProtectedRoute>
               <NewSession />
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/drill-session/:id"
+          element={
+            <ProtectedRoute>
+              <DrillSession />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stats"
+          element={
+            <ProtectedRoute>
+              <Stats />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
+

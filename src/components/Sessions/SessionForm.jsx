@@ -1,80 +1,66 @@
-import { useState } from 'react';
-import { createSession } from '../../api/api';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const SessionForm = ({ token, existingSession = null, onSuccess }) => {
-  const [form, setForm] = useState(
-    existingSession || {
-      title: '',
-      mode: '',
-      stats: {
-        points: 0,
-        assists: 0,
-        rebounds: 0,
-        steals: 0,
-        blocks: 0,
-        turnovers: 0,
-        shotsMade: 0,
-        shotsAttempted: 0,
-      },
-    }
-  );
-  const [message, setMessage] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (Object.keys(form.stats).includes(name)) {
-      setForm({
-        ...form,
-        stats: { ...form.stats, [name]: Number(value) },
-      });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-  };
+const SessionForm = ({ existingSession }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [title, setTitle] = useState(existingSession?.title || '');
+  const [mode, setMode] = useState(existingSession?.mode || '');
+  const [points, setPoints] = useState(existingSession?.stats.points || 0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const method = existingSession ? 'PUT' : 'POST';
+    const url = existingSession
+      ? `http://localhost:5050/api/sessions/${existingSession._id}`
+      : 'http://localhost:5050/api/sessions';
+
     try {
-      const res = await createSession(form, token);
-      setMessage('Session saved successfully!');
-      if (onSuccess) onSuccess(res.data);
+      const res = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({
+          title,
+          mode,
+          stats: { points },
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to save session');
+      navigate('/');
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Error saving session.');
+      console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="session-form">
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="title"
-        placeholder="Session Title"
-        value={form.title}
-        onChange={handleChange}
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
       />
-      <select name="mode" value={form.mode} onChange={handleChange}>
-        <option value="">Select Mode</option>
-        <option value="practice">Practice</option>
-        <option value="game">Game</option>
-        <option value="training">Training</option>
-      </select>
-
-      <h4>Stats</h4>
-      {Object.keys(form.stats).map((key) => (
-        <div key={key}>
-          <label>{key}</label>
-          <input
-            type="number"
-            name={key}
-            value={form.stats[key]}
-            onChange={handleChange}
-          />
-        </div>
-      ))}
-
-      <button type="submit">Save Session</button>
-      {message && <p>{message}</p>}
+      <input
+        type="text"
+        placeholder="Mode"
+        value={mode}
+        onChange={(e) => setMode(e.target.value)}
+        required
+      />
+      <input
+        type="number"
+        placeholder="Points"
+        value={points}
+        onChange={(e) => setPoints(Number(e.target.value))}
+        min={0}
+      />
+      <button type="submit">{existingSession ? 'Update' : 'Create'} Session</button>
     </form>
   );
 };
