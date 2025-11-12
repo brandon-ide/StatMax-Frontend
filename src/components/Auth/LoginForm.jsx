@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import logowhite from '../../assets/logowhite.png';
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -30,24 +31,31 @@ const LoginForm = () => {
   };
 
   return (
+    <div className="loginForm">
     <form onSubmit={handleSubmit}>
       {error && <p>{error}</p>}
+      <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+      <h1>Login</h1>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Enter Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-      />
+      /><br />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Enter Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
-      />
-      <button type="submit">Login</button>
+      /><br />
+      <button id="loginSubmit" type="submit">LOG IN</button>
+      <p>
+        Not a member? <Link to="/signup">Sign up here</Link>
+      </p>
     </form>
+    </div>
   );
 };
 

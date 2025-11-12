@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const { login } = useContext(AuthContext);
@@ -55,6 +55,9 @@ const SignUpForm = () => {
         required
       />
       <button type="submit">Sign Up</button>
+      <p>
+        Already have an account? <Link to="/login">Log in here</Link>
+      </p>
     </form>
   );
 };

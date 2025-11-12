@@ -1,0 +1,120 @@
+/* ---- GLOBAL SETTINGS ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #c9c9c9;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:visited {
+    color: white;
+  }  
+
+  /*---- LOGIN CSS DESKTOP AND MOBILE ---- */
+
+  .login {
+    display: flex;
+    height: 100vh;
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f1f1f;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 50vw;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  }
+
+  input {
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 7px;
+  }
+
+  #loginSubmit {
+    height: 35px;
+    width: 200px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12pt;
+    color: #000000;
+    background-color: #ff9100;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    border-color: #ff9100;
+  }
+
+  #loginSubmit:hover {
+    background-color:#d87a00;
+    border-color: #d87a00;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .logoAndTagLine {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    font-size: 24pt;
+  }
+
+  .logoWhite {
+    display: none;
+  }
+
+  .logo {
+    margin-top: -120px;
+    margin-bottom: -100px;
+  }
+
+  #tagLine {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  @media only screen and (max-width: 992px) {
+
+    .logoWhite {
+      display: block;
+      width: 300px;
+      margin-top: -100px;
+    }
+
+    .logoAndTagLine {
+      display: none;
+    }
+
+    .loginForm {
+      width: 100vw;
+    }
+    
+  }
+
