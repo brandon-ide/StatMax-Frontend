@@ -27,14 +27,14 @@
     color: white;
   }  
 
-  /*---- LOGIN CSS DESKTOP AND MOBILE ---- */
+  /*---- LOGIN & SIGNUP CSS DESKTOP AND MOBILE ---- */
 
-  .login {
+  .login, .signup {
     display: flex;
     height: 100vh;
   }
 
-  .loginForm {
+  .loginForm, .signupForm {
     display: flex;
     flex-direction: column;
     background-color: #1f1f1f;
@@ -55,7 +55,7 @@
     border-radius: 7px;
   }
 
-  #loginSubmit {
+  #loginSubmit, #signupSubmit {
     height: 35px;
     width: 200px;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -70,6 +70,13 @@
   }
 
   #loginSubmit:hover {
+    background-color:#d87a00;
+    border-color: #d87a00;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  #signupSubmit:hover {
     background-color:#d87a00;
     border-color: #d87a00;
     transition: 0.3s ease;
@@ -112,9 +119,210 @@
       display: none;
     }
 
-    .loginForm {
+    .loginForm, .signupForm {
       width: 100vw;
     }
-    
-  }
+}
 
+/* ---- DASHBOARD CSS DESKTOP & MOBILE ---- */
+
+.dashboardHeader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: fit-content;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboardLogoWhite {
+  width: 120px;
+}
+
+.dashTitle {
+  display: flex;
+}
+
+.dashboard {
+  height: 100vh;
+  background-color: #1f1f1f;
+}
+
+.logoutButton {
+  background-color: #e30000;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: #b30000;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.sessionListHeader {
+  font-size: 14pt;
+  width: 25%;
+  position: fixed;
+  padding: 15px;
+  background-color: #cccbcb;
+  text-align: center;
+  color: #000000;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  z-index: 3;
+}
+
+.sessionListContainer {
+  position: fixed;
+  background-color: #c9c9c9;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 25%;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.sessionItem {
+  display: row;
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #292929;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.sessionItem:hover {
+  background-color: #1c1c1c;
+  transform: scale(1.02);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  cursor: pointer;
+}
+
+#deleteSessionItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: stretch;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12pt;
+  color: #000000;
+  background-color: #fc9e23;
+  margin-top: 10px;
+  border-radius: 10px;
+  border-color: #fc9e23;
+}
+
+#deleteSessionItem:hover {
+  color: #ffffff;
+  background-color:#950000;
+  border-color: #950000;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.chartContainer {
+  color: #ffffff;
+  margin-left: 25%;
+  background-color: #1f1f1f;
+  padding-top: 120px;
+  padding-left: 20px;
+  padding-right: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.navButtons {
+  height: fit-content;
+  position: fixed;
+  width: 75%;
+  right: 45px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-left: 50px;
+  text-align: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.navButtons button {
+  background-color: #333;
+  color: white;
+  border: 2px solid #bdbdbd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.navButtons button:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+.dashboardFooter {
+  right: 0;
+  position: fixed;
+  bottom: 20px;
+  width: 75%;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+@media only screen and (max-width: 992px) {
+
+.sessionListContainer {
+  display: none;
+}
+
+.dashboard {
+  width: 100vw;
+}
+
+.dashboardHeader {
+  width: 100vw;
+}
+
+.dashTitle {
+  font-size: 16pt;
+  text-align: center;
+}
+
+.chartContainer {
+  margin: auto;
+}
+
+.dashboardFooter {
+  width: 100%;
+}
+
+}
+
+@media only screen and (max-width: 540px) {
+
+.navButtons {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+}

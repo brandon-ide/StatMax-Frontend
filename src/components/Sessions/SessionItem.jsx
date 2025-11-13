@@ -4,6 +4,12 @@ import { AuthContext } from '../../context/AuthContext';
 const SessionItem = ({ session, onDelete }) => {
   const { user } = useContext(AuthContext);
 
+  const formattedDate = new Date(session.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
   const handleDelete = async () => {
     try {
       await fetch(`http://localhost:5050/api/sessions/${session._id}`, {
@@ -17,12 +23,21 @@ const SessionItem = ({ session, onDelete }) => {
   };
 
   return (
+    <div className="sessionItem">
     <li>
-      <h3>{session.title}</h3>
-      <p>Mode: {session.mode}</p>
+      <h3>{session.title}</h3><p className="date">{formattedDate}</p><br />
       <p>Points: {session.stats.points}</p>
-      <button onClick={handleDelete}>Delete</button>
+      <p>Assists: {session.stats.assists}</p>
+      <p>Rebounds: {session.stats.rebounds}</p>
+      <p>Steals: {session.stats.steals}</p>
+      <p>Blocks: {session.stats.blocks}</p>
+      <p>Turnovers: {session.stats.turnovers}</p>
+      <p>Shots Made: {session.stats.shotsMade}</p>
+      <p>Shots Attempted: {session.stats.shotsAttempted}</p>
+      <p>Shooting %: {session.stats.shootingPercentage}</p><br />
+      <button id="deleteSessionItem" onClick={handleDelete}>Delete</button>
     </li>
+    </div>
   );
 };
 
