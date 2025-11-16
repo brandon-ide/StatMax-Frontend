@@ -441,5 +441,17 @@
   font-size: 18pt;
 }
 
+}
 
+/* ---- DRILL SESSION CSS DESKTOP & MOBILE ---- */
+
+.readOnlyInput {
+  background-color: #555;
+  color: #fff;
+}
+
+.shootingPercentField {
+  background-color: #333;
+  color: lightgreen;
+  font-weight: bold;
 }

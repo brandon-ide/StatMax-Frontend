@@ -33,7 +33,7 @@ const App = () => {
           }
         />
         <Route
-          path="/drill-session/:id"
+          path="/drill-session"
           element={
             <ProtectedRoute>
               <DrillSession />

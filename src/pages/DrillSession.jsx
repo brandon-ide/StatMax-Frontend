@@ -1,13 +1,12 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DrillSessionForm from '../components/Sessions/DrillSessionForm';
+import logowhite from '../assets/logowhite.png';
 
 const DrillSession = () => {
-  const { state } = useLocation();
   const navigate = useNavigate();
-  const presetMode = state?.mode || '';
   const [success, setSuccess] = useState(false);
+  const presetMode = "Shooting Drill";
 
   const handleSuccess = () => {
     setSuccess(true);
@@ -16,29 +15,20 @@ const DrillSession = () => {
       navigate('/');
     }, 2000);
   };
-  
+
   return (
-    <div className="drillSessionPage">
-      <button 
-        className="goBackButton" 
-        onClick={() => navigate(-1)}
-        style={{
-          position: "fixed",
-          top: "15px",
-          right: "15px",
-          padding: "8px 14px",
-          cursor: "pointer"
-        }}
-      >
+    <div className="newSessionPage">
+      <div className="newSessionHeader">
+      <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
+      <h1 id="newSessionTop">Shooting Drill</h1>
+      <button className="goBackButton" onClick={() => navigate(-1)}>
         Go Back
       </button>
-      <h1>Shooting Drill Session</h1>
-      {success && (
-        <p style={{ color: "lightgreen", fontWeight: "bold" }}>
-          Session saved successfully!
-        </p>
-      )}
+      </div>
+
       <DrillSessionForm presetMode={presetMode} onSuccess={handleSuccess} />
+
+      {success && <p className="successMsg">Drill Session Saved!</p>}
     </div>
   );
 };

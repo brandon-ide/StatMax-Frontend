@@ -10,7 +10,7 @@ const SessionItem = ({ session, setSessions }) => {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${user.token}` },
       });
-      
+
       setSessions(prev => prev.filter(s => s._id !== session._id));
 
     } catch (err) {
@@ -28,6 +28,7 @@ const SessionItem = ({ session, setSessions }) => {
     <div className="sessionItem">
     <li>
       <h3>{session.title}</h3><p className="date">{formattedDate}</p><br />
+      <p>Mode: {session.mode}</p>
       <p>Points: {session.stats.points}</p>
       <p>Assists: {session.stats.assists}</p>
       <p>Rebounds: {session.stats.rebounds}</p>
