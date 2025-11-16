@@ -150,7 +150,7 @@
 .dashboard {
   height: 100vh;
   background-color: #1f1f1f;
-  overflow-y: auto;
+  overflow-y: hidden;
 
 }
 
@@ -306,6 +306,7 @@
 
 .dashboard {
   width: 100vw;
+  overflow-y: auto;
 }
 
 .dashboardHeader {
@@ -362,4 +363,83 @@
   flex: 1;
   margin-top: 1rem;
 }
+}
+
+/* ---- NEW SESSION CSS DESKTOP & MOBILE ---- */
+
+.newSessionPage {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: #1f1f1f;
+}
+
+.goBackButton {
+  background-color: #e30000;
+  color: white;
+  top: 15px;
+  right: 15px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+}
+
+.goBackButton:hover {
+  background-color: #b30000;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.newSessionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+#sessionInput {
+  font-size: 14pt;
+  height: 50px;
+  margin-right: 1rem;
+}
+
+#createSessionButton {
+  height: 50px;
+  width: 200px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14pt;
+  color: #000000;
+  background-color: #ff9100;
+  border-radius: 10px;
+  border-color: #ff9100;
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
+#createSessionButton:hover {
+  background-color:#d87a00;
+  border-color: #d87a00;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+
+#sessionInput {
+  height: 40px;
+  font-size: 10pt;
+}
+
+.newSessionHeader {
+  padding-left: .5rem;
+}
+
+#newSessionTop {
+  font-size: 18pt;
+}
+
+
 }

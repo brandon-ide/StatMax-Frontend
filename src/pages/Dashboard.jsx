@@ -16,9 +16,8 @@ const Dashboard = () => {
       navigate('/drill-session');
     } else if (mode === 'View All-Time Stats') {
       navigate('/stats');
-    }
-    else {
-      navigate('/new-session');
+    } else {
+      navigate('/new-session', { state: { mode } });
     }
   };
 
@@ -46,15 +45,16 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="dashboardHeader">
-      <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
-      <h1 className="dashTitle">{user?.username}'s Stat Dashboard</h1>
-      <button className="logoutButton" onClick={handleLogout}>Logout</button>
+        <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
+        <h1 className="dashTitle">{user?.username}'s Stat Dashboard</h1>
+        <button className="logoutButton" onClick={handleLogout}>Logout</button>
       </div>
+
       <div className="chartContainer">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={sessions}>
             <CartesianGrid strokeDasharray="2 2" stroke="#444" />
-            <XAxis dataKey="title" stroke="#fff" />
+            <XAxis dataKey="title" stroke="#fff" fontSize="10pt" />
             <YAxis stroke="#fff" domain={[0, 30]} />
             <Tooltip contentStyle={{ backgroundColor: '#333', color: '#fff' }}/>
             <Line type="monotone" dataKey="stats.points" stroke="#3cd500" strokeWidth={2} name="Points" />
@@ -66,8 +66,11 @@ const Dashboard = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <SessionList sessions={sessions} />
+
+      <SessionList sessions={sessions} setSessions={setSessions} />
+
       <h2 id="navButtonsHeader">Start A New Session</h2>
+
       <div className="navButtons">
         {['Official Game', 'Pickup Game', 'Practice Session', 'Shooting Drill', 'View All-Time Stats'].map((mode) => (
           <button key={mode} onClick={() => handleClick(mode)}>
@@ -75,6 +78,7 @@ const Dashboard = () => {
           </button>
         ))}
       </div>
+
       <div className="dashboardFooter">
         <p>© {new Date().getFullYear()} StatMax. All rights reserved.</p>
       </div>

@@ -1,14 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
-const SessionItem = ({ session, onDelete }) => {
+const SessionItem = ({ session, setSessions }) => {
   const { user } = useContext(AuthContext);
-
-  const formattedDate = new Date(session.date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
 
   const handleDelete = async () => {
     try {
@@ -16,11 +10,19 @@ const SessionItem = ({ session, onDelete }) => {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${user.token}` },
       });
-      if (onDelete) onDelete(session._id);
+      
+      setSessions(prev => prev.filter(s => s._id !== session._id));
+
     } catch (err) {
       console.error(err);
     }
   };
+
+  const formattedDate = new Date(session.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
     <div className="sessionItem">
