@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const SessionItem = ({ session, setSessions }) => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
@@ -16,6 +18,10 @@ const SessionItem = ({ session, setSessions }) => {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleUpdate = () => {
+    navigate('/update-session', { state: { session } });
   };
 
   const formattedDate = new Date(session.date).toLocaleDateString('en-US', {
@@ -38,6 +44,7 @@ const SessionItem = ({ session, setSessions }) => {
       <p>Shots Made: {session.stats.shotsMade}</p>
       <p>Shots Attempted: {session.stats.shotsAttempted}</p>
       <p>Shooting %: {session.stats.shootingPercentage}</p><br />
+      <button id="updateSessionItem" onClick={handleUpdate}>Update</button>
       <button id="deleteSessionItem" onClick={handleDelete}>Delete</button>
     </li>
     </div>

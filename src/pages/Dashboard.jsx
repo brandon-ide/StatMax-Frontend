@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import SessionList from '../components/Sessions/SessionList';
 import { useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import logowhite from '../assets/logowhite.png';
@@ -14,7 +13,7 @@ const Dashboard = () => {
   const handleClick = (mode) => {
     if (mode === 'Shooting Drill') {
       navigate('/drill-session');
-    } else if (mode === 'View All-Time Stats') {
+    } else if (mode === 'View Past Sessions') {
       navigate('/stats');
     } else {
       navigate('/new-session', { state: { mode } });
@@ -66,13 +65,11 @@ const Dashboard = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      <SessionList sessions={sessions} setSessions={setSessions} />
-
+      
       <h2 id="navButtonsHeader">Start A New Session</h2>
 
       <div className="navButtons">
-        {['Official Game', 'Pickup Game', 'Practice Session', 'Shooting Drill', 'View All-Time Stats'].map((mode) => (
+        {['Official Game', 'Pickup Game', 'Practice Session', 'Shooting Drill', 'View Past Sessions'].map((mode) => (
           <button key={mode} onClick={() => handleClick(mode)}>
             {mode}
           </button>

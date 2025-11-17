@@ -5,7 +5,7 @@ const SessionList = ({ sessions, setSessions }) => {
 
 return (
     <div className="sessionListContainer">
-    <h1 className="sessionListHeader">Your Past Sessions</h1>
+    <h1 className="sessionListHeader">Your Past Sessions</h1><br />
     <ul>
       {sessions.map((session) => (
         <SessionItem 

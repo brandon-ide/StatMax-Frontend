@@ -7,6 +7,7 @@ import NewSession from './pages/NewSession';
 import DrillSession from './pages/DrillSession';
 import Stats from './pages/Stats';
 import ProtectedRoute from './components/ProtectedRoute';
+import UpdateSession from './pages/UpdateSession';
 
 const App = () => {
   return (
@@ -45,6 +46,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Stats />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/update-session"
+          element={
+            <ProtectedRoute>
+              <UpdateSession />
             </ProtectedRoute>
           }
         />
