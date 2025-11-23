@@ -29,12 +29,12 @@
 
   /*---- LOGIN & SIGNUP CSS DESKTOP AND MOBILE ---- */
 
-  .login, .signup {
+  .login, .signup, .forgotPassword, .resetPassword {
     display: flex;
     height: 100vh;
   }
 
-  .loginForm, .signupForm {
+  .loginForm, .signupForm, .forgotPasswordForm, .resetPasswordForm {
     display: flex;
     flex-direction: column;
     background-color: #1f1f1f;
@@ -55,7 +55,7 @@
     border-radius: 7px;
   }
 
-  #loginSubmit, #signupSubmit {
+  #loginSubmit, #signupSubmit, #forgotPasswordSubmit, #resetPasswordSubmit {
     height: 35px;
     width: 200px;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -77,6 +77,19 @@
   }
 
   #signupSubmit:hover {
+    background-color:#d87a00;
+    border-color: #d87a00;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  #forgotPasswordSubmit:hover {
+    background-color:#d87a00;
+    border-color: #d87a00;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  #resetPasswordSubmit:hover {
     background-color:#d87a00;
     border-color: #d87a00;
     transition: 0.3s ease;
@@ -119,7 +132,7 @@
       display: none;
     }
 
-    .loginForm, .signupForm {
+    .loginForm, .signupForm, .forgotPasswordForm, .resetPasswordForm {
       width: 100vw;
     }
 }
@@ -486,6 +499,95 @@
 
   .allTimeStatsContainer {
     display: flex;
+    font-size: 11pt;
     justify-content: space-evenly;
+    border-radius: 10px;
+    border: 1px solid rgb(181, 181, 181);
+    transition: all 0.3s ease;
+    padding-top: 10px;
   }
+
+  .allTimeStatsContainer:hover {
+    background-color: #1c1b01;
+    cursor: pointer;
+  }
+
+  .shootingPercentStat {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(181, 181, 181);
+    transition: all 0.3s ease;
+  }
+
+  .shootingPercentStat:hover {
+    background-color: #1c1b01;
+    cursor: pointer;
+  }
+}
+
+/* ---- RANKINGS CSS DESKTOP & MOBILE ---- */
+
+.rankingsPage {
+  padding: 20px;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  background-color: #1f1f1f;
+}
+
+.rankingTabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rankingTabs button {
+  font-size: 14pt;
+  padding: 10px 14px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  border: 2px solid #bdbdbd;
+}
+
+.rankingTabs button:hover {
+  background-color: #00142d;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.rankingTabs .activeTab {
+  color: #ffffff;
+  background: #007daf;
+}
+
+.rankingList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 20px;
+}
+
+.rankingItem {
+  display: flex;
+  justify-content: center;
+  font-size: 18pt;
+  width: 100vw;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+@media only screen and (max-width: 720px) {
+
+.rankingTabs button {
+  font-size: 8pt;
+}
+
 }

@@ -2,12 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
 import NewSession from './pages/NewSession';
 import DrillSession from './pages/DrillSession';
 import Stats from './pages/Stats';
 import ProtectedRoute from './components/ProtectedRoute';
 import UpdateSession from './pages/UpdateSession';
+import Rankings from './pages/Rankings';
 
 const App = () => {
   return (
@@ -15,6 +18,8 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         {/* Protected Routes */}
         <Route
@@ -54,6 +59,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <UpdateSession />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rankings"
+          element={
+            <ProtectedRoute>
+              <Rankings />
             </ProtectedRoute>
           }
         />

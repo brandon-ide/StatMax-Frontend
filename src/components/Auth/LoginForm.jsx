@@ -52,6 +52,9 @@ const LoginForm = () => {
       /><br />
       <button id="loginSubmit" type="submit">LOG IN</button>
       <p>
+      <Link to="/forgot-password">Forgot Password?</Link>
+      </p>
+      <p>
         Not a member? <Link to="/signup">Sign up here</Link>
       </p>
     </form>
