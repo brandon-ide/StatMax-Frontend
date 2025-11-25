@@ -1,18 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import Dashboard from './pages/Dashboard';
-import NewSession from './pages/NewSession';
-import DrillSession from './pages/DrillSession';
-import Stats from './pages/Stats';
-import ProtectedRoute from './components/ProtectedRoute';
-import UpdateSession from './pages/UpdateSession';
-import Rankings from './pages/Rankings';
+import { FC } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import Dashboard from "./pages/Dashboard";
+import NewSession from "./pages/NewSession";
+import DrillSession from "./pages/DrillSession";
+import Stats from "./pages/Stats";
+import ProtectedRoute from "./components/ProtectedRoute";
+import UpdateSession from "./pages/UpdateSession";
+import Rankings from "./pages/Rankings";
 
-const App = () => {
+const App: FC = () => {
   return (
     <Router>
       <Routes>
@@ -21,7 +21,6 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-        {/* Protected Routes */}
         <Route
           path="/"
           element={
@@ -30,6 +29,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/new-session"
           element={
@@ -38,6 +38,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/drill-session"
           element={
@@ -46,6 +47,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/stats"
           element={
@@ -54,6 +56,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/update-session"
           element={
@@ -62,6 +65,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/rankings"
           element={
@@ -76,4 +80,3 @@ const App = () => {
 };
 
 export default App;
-

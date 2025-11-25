@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext, AuthContextType } from '../../context/AuthContext';
 
-const Header = () => {
-  const { user, logout } = useContext(AuthContext);
+const Header: React.FC = () => {
+const authContext = useContext(AuthContext);
+  if (!authContext) throw new Error("AuthContext must be used within an AuthProvider");
+const { user, logout } = authContext;
+
   const navigate = useNavigate();
 
   const handleLogout = () => {

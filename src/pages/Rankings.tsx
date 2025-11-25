@@ -1,23 +1,46 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import logowhite from '../assets/logowhite.png';
+import logowhite from "../assets/logowhite.png";
 
-const statsList = ["points", "rebounds", "assists", "blocks", "steals"];
+type StatKey = "points" | "rebounds" | "assists" | "blocks" | "steals";
+
+interface User {
+  username: string;
+  points?: number;
+  rebounds?: number;
+  assists?: number;
+  blocks?: number;
+  steals?: number;
+}
+
+interface RankingsData {
+  points: User[];
+  rebounds: User[];
+  assists: User[];
+  blocks: User[];
+  steals: User[];
+}
+
+const statsList: StatKey[] = ["points", "rebounds", "assists", "blocks", "steals"];
 
 const Rankings = () => {
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [rankings, setRankings] = useState(null);
-  const [activeStat, setActiveStat] = useState("points");
+const authContext = useContext(AuthContext);
+  if (!authContext) throw new Error("AuthContext must be used within an AuthProvider");
+const { user } = authContext;
+
+const navigate = useNavigate();
+const [rankings, setRankings] = useState<RankingsData | null>(null);
+const [activeStat, setActiveStat] = useState<StatKey>("points");
 
   useEffect(() => {
     const fetchRankings = async () => {
+      if (!user) return;
       try {
         const res = await fetch("http://localhost:5050/api/rankings", {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        const data = await res.json();
+        const data: RankingsData = await res.json();
         setRankings(data);
       } catch (err) {
         console.error(err);
@@ -31,14 +54,11 @@ const Rankings = () => {
   return (
     <div className="rankingsPage">
       <div className="newSessionHeader">
-      <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
-      <h1 id="newSessionTop">StatMax Rankings Board</h1>
-      <button 
-        className="goBackButton" 
-        onClick={() => navigate(-1)}
-      >
-        Go Back
-      </button>
+        <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
+        <h1 id="newSessionTop">StatMax Rankings Board</h1>
+        <button className="goBackButton" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
       </div>
 
       <div className="rankingTabs">
@@ -56,9 +76,9 @@ const Rankings = () => {
       <ul className="rankingList">
         {rankings[activeStat].map((u, index) => (
           <li key={u.username} className="rankingItem">
-            <strong>#{index + 1}</strong> — {u.username}  
+            <strong>#{index + 1}</strong> — {u.username}
             <span style={{ marginLeft: "10px", color: "#fc9e23" }}>
-              {u[activeStat]}
+              {u[activeStat] || 0}
             </span>
           </li>
         ))}

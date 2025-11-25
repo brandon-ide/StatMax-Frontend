@@ -1,11 +1,11 @@
 import React from 'react';
+import SignUpForm from '../components/Auth/SignupForm';
 import logo from '../assets/logo.png';
-import ResetPassword from '../components/Auth/ResetPasswordForm';
 
-const ResetPasswordPage = () => {
+const Signup: React.FC = () => {
   return (
-    <div className="resetPassword">
-      <ResetPassword />
+    <div className="signup">
+      <SignUpForm />
       <div className="logoAndTagLine">
         <img src={logo} alt="StatMax Logo" className="logo" />
         <h2 id="tagLine">
@@ -16,4 +16,4 @@ const ResetPasswordPage = () => {
   );
 };
 
-export default ResetPasswordPage;
+export default Signup;

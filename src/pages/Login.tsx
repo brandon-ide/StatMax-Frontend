@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from '../components/Auth/LoginForm';
 import logo from '../assets/logo.png';
 
-const Login = () => {
+const Login: React.FC = () => {
   return (
     <div className="login">
       <LoginForm />

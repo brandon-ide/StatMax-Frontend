@@ -1,13 +1,17 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Location } from 'react-router-dom';
 import { useState } from 'react';
 import SessionForm from '../components/Sessions/SessionForm';
 import logowhite from '../assets/logowhite.png';
 
-const NewSession = () => {
-  const { state } = useLocation();
+interface LocationState {
+  mode?: string;
+}
+
+const NewSession: React.FC = () => {
+  const { state } = useLocation() as Location & { state: LocationState };
   const navigate = useNavigate();
   const presetMode = state?.mode || '';
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleSuccess = () => {
     setSuccess(true);
@@ -20,14 +24,14 @@ const NewSession = () => {
   return (
     <div className="newSessionPage">
       <div className="newSessionHeader">
-      <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
-      <h1 id="newSessionTop">New Session</h1>
-      <button 
-        className="goBackButton" 
-        onClick={() => navigate(-1)}
-      >
-        Go Back
-      </button>
+        <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
+        <h1 id="newSessionTop">New Session</h1>
+        <button 
+          className="goBackButton" 
+          onClick={() => navigate(-1)}
+        >
+          Go Back
+        </button>
       </div>
 
       {success && (

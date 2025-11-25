@@ -2,7 +2,7 @@ import React from 'react';
 import ForgotPassword from '../components/Auth/ForgotPasswordForm';
 import logo from '../assets/logo.png';
 
-const ForgotPasswordPage = () => {
+const ForgotPasswordPage: React.FC = () => {
   return (
     <div className="forgotPassword">
       <ForgotPassword />

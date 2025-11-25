@@ -1,22 +1,41 @@
-import { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import logowhite from '../assets/logowhite.png';
 
+interface SessionStats {
+  points: number;
+  rebounds: number;
+  assists: number;
+  steals: number;
+  blocks: number;
+  turnovers: number;
+  shotsMade: number;
+  shotsAttempted: number;
+  shootingPercentage: number;
+}
+
+interface Session {
+  _id: string;
+  title: string;
+  mode: string;
+  date: string;
+  stats: SessionStats;
+}
+
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
-  const [sessions, setSessions] = useState([]);
-  const { logout } = useContext(AuthContext);
+  const { user, logout } = useAuth();
+  const [sessions, setSessions] = useState<Session[]>([]);
   const navigate = useNavigate();
 
-  const handleClick = (mode) => {
+  const handleClick = (mode: string) => {
     if (mode === 'Shooting Drill') {
       navigate('/drill-session');
     } else if (mode === 'View Past Sessions') {
       navigate('/stats');
     } else if (mode === 'View Rankings') {
-        navigate('/rankings');
+      navigate('/rankings');
     } else {
       navigate('/new-session', { state: { mode } });
     }
@@ -34,7 +53,7 @@ const Dashboard = () => {
         const res = await fetch('http://localhost:5050/api/sessions', {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        const data = await res.json();
+        const data: Session[] = await res.json();
         setSessions(data);
       } catch (err) {
         console.error(err);
@@ -55,7 +74,7 @@ const Dashboard = () => {
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={sessions}>
             <CartesianGrid strokeDasharray="2 2" stroke="#444" />
-            <XAxis dataKey="title" stroke="#fff" fontSize="10pt" />
+            <XAxis dataKey="title" stroke="#fff" fontSize={10} />
             <YAxis stroke="#fff" domain={[0, 30]} />
             <Tooltip contentStyle={{ backgroundColor: '#333', color: '#fff' }}/>
             <Line type="monotone" dataKey="stats.points" stroke="#3cd500" strokeWidth={2} name="Points" />
@@ -67,7 +86,7 @@ const Dashboard = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      
+
       <h2 id="navButtonsHeader">Start A New Session</h2>
 
       <div className="navButtons">
