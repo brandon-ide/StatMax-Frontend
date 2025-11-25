@@ -1,4 +1,3 @@
-// src/components/Sessions/SessionList.tsx
 import React from 'react';
 import SessionItem from './SessionItem';
 

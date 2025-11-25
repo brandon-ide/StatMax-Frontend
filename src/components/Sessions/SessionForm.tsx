@@ -45,7 +45,6 @@ const { user } = authContext;
   const [shotsAttempted, setShotsAttempted] = useState<string>(existingSession?.stats?.shotsAttempted?.toString() || '');
   const [shootingPercentage, setShootingPercentage] = useState<number>(existingSession?.stats?.shootingPercentage || 0);
 
-  // Auto-calculate shooting percentage
   useEffect(() => {
     const made = Number(shotsMade);
     const attempted = Number(shotsAttempted);

@@ -8,7 +8,7 @@ interface Session {
   _id: string;
   title: string;
   mode: string;
-  date: string; // required
+  date: string;
   stats: {
     points: number;
     rebounds: number;
@@ -45,7 +45,6 @@ const navigate = useNavigate();
     fetchSessions();
   }, [user]);
 
-  // Calculations
   const totalShotsMade = sessions.reduce((sum, s) => sum + (s.stats.shotsMade || 0), 0);
   const totalShotsAttempted = sessions.reduce((sum, s) => sum + (s.stats.shotsAttempted || 0), 0);
   const shootingPercentage = totalShotsAttempted

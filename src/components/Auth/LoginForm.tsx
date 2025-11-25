@@ -25,8 +25,8 @@ const LoginForm = () => {
 
       if (!res.ok) throw new Error(data.message || 'Login failed');
 
-      login(data); // store user + token
-      navigate('/'); // redirect to dashboard
+      login(data);
+      navigate('/');
     } catch (err: any) {
       setError(err.message);
     }

@@ -20,7 +20,6 @@ const ForgotPassword = () => {
       const data: { message?: string; error?: string } = await res.json();
       setMessage(data.message || data.error || "");
 
-      // Redirect to login after 3 seconds
       setTimeout(() => navigate("/login"), 3000);
     } catch (err) {
       setMessage("Something went wrong.");
