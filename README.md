@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+StatMax — Basketball Training & Stats Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+StatMax is a full-stack basketball performance tracker designed for players who want to level up their game through data. Users can log sessions, track their statistics over time, view personalized dashboards, and compare their performance on a global rankings board.
 
-## Available Scripts
+Built with a modern MERN + TypeScript architecture, StatMax focuses on speed, simplicity, and meaningful insights.
 
-In the project directory, you can run:
+🚀 Features
+📊 Create & Track Sessions
 
-### `npm start`
+Log new training sessions with stats for:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Points
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Assists
 
-### `npm test`
+Rebounds
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Blocks
 
-### `npm run build`
+Steals
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Shots Made
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Shots Attempted
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+True Shooting Percentage
 
-### `npm run eject`
+All sessions are stored per user and tied to their account.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📈 Personal Dashboard
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Displays recent stats and trend lines using Recharts.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Showcases session history and performance trends.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Quick navigation to start new sessions or view rankings.
 
-## Learn More
+🏆 Global Rankings Board
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Compare yourself with all other StatMax users.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Rankings are auto-sorted for:
 
-### Code Splitting
+Points
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Rebounds
 
-### Analyzing the Bundle Size
+Assists
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Blocks
 
-### Making a Progressive Web App
+Steals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Switch between categories without reloading.
 
-### Advanced Configuration
+🔐 Authentication System
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Secure signup and login using JWT tokens.
 
-### Deployment
+Enforced unique usernames and emails.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Persistent login session via AuthContext + Protected Routes.
 
-### `npm run build` fails to minify
+🧭 Smooth User Flow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sign Up → Log In → Dashboard → Sessions → Rankings
+
+Clean UI optimized for speed and readability.
+
+🛠️ Tech Stack
+Frontend
+
+React + TypeScript
+
+React Router
+
+Context API (Auth Provider)
+
+Custom components for forms, stats, sessions, and rankings
+
+CSS-based responsive styling
+
+Backend
+
+Node.js + Express
+
+MongoDB + Mongoose
+
+JWT-based authentication
+
+REST API for sessions, users, stats, and rankings
+
+📡 API Overview
+Auth Routes
+
+POST /api/auth/signup — Create a new user
+
+POST /api/auth/login — Log in and receive token
+
+Sessions Routes
+
+POST /api/sessions — Create a new drill session
+
+GET /api/sessions — Get user’s sessions
+
+PUT /api/sessions/:id — Update a session
+
+DELETE /api/sessions/:id — Remove a session
+
+Rankings Route
+
+GET /api/rankings — Returns sorted leaderboard data for all stat categories
+
+🔐 User Authentication Flow
+
+User signs up with email, username, and password
+
+Backend validates uniqueness of username and email
+
+User logs in and receives a JWT token
+
+Token is stored in AuthContext and sent with each secure request
+
+Protected pages validate authentication before access
