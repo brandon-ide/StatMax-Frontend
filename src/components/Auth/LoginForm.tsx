@@ -36,7 +36,7 @@ const LoginForm = () => {
     <div className="loginForm">
       <form onSubmit={handleSubmit}>
         {error && <p>{error}</p>}
-        <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+        <img src={logowhite} alt="StatMax Logo White" className="mobileLogoWhite" />
         <h1>Login</h1>
         <input
           type="email"

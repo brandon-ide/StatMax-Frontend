@@ -29,7 +29,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgotPasswordForm">
-      <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+      <img src={logowhite} alt="StatMax Logo White" className="mobileLogoWhite" />
       {message && <p>{message}</p>}<br />
       <h1>Forgotten Password</h1>
 

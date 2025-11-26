@@ -47,7 +47,7 @@ const SignUpForm: React.FC = () => {
   return (
     <div className="signupForm">
       <form onSubmit={handleSubmit}>
-        <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+        <img src={logowhite} alt="StatMax Logo White" className="mobileLogoWhite" />
         {error && <p className="errorMessage">{error}</p>}<br />
         <h1>Sign Up</h1>
 

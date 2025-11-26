@@ -30,7 +30,7 @@ const ResetPassword: React.FC = () => {
 
   return (
     <div className="resetPasswordForm">
-      <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+      <img src={logowhite} alt="StatMax Logo White" className="mobileLogoWhite" />
       <h1>Reset Your Password</h1>
 
       <form onSubmit={handleSubmit}>
