@@ -30,6 +30,7 @@ const ForgotPassword = () => {
   return (
     <div className="forgotPasswordForm">
       <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
+      {message && <p>{message}</p>}<br />
       <h1>Forgotten Password</h1>
 
       <form onSubmit={handleSubmit}>
@@ -49,8 +50,6 @@ const ForgotPassword = () => {
           <Link to="/login">Go back to Login</Link>
         </p>
       </form>
-
-      {message && <p>{message}</p>}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import logowhite from "../assets/logowhite.png";
 type StatKey = "points" | "rebounds" | "assists" | "blocks" | "steals";
 
 interface User {
+  _id: string;
   username: string;
   points?: number;
   rebounds?: number;
@@ -75,7 +76,7 @@ const [activeStat, setActiveStat] = useState<StatKey>("points");
 
       <ul className="rankingList">
         {rankings[activeStat].map((u, index) => (
-          <li key={u.username} className="rankingItem">
+          <li key={u._id} className="rankingItem">
             <strong>#{index + 1}</strong> — {u.username}
             <span style={{ marginLeft: "10px", color: "#fc9e23" }}>
               {u[activeStat] || 0}
