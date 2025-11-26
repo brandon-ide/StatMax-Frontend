@@ -10,7 +10,7 @@ const LandingPage: React.FC = () => {
           <div className="logoAndTagLine">
           <img src={logowhite} alt="StatMax Logo White" className="logoWhite" />
           <h2 id="tagLine">
-            Track your stats.<br />Up your game.<br />Be the best.<br />Period.
+            Track your stats.<br />See your rank.<br />Be the best.<br />Period.
           </h2>
         </div>
         </div>
