@@ -36,6 +36,8 @@ const Dashboard = () => {
       navigate('/stats');
     } else if (mode === 'View Rankings') {
       navigate('/rankings');
+    } else if (mode=== 'Ask Coach Max') {
+      navigate('/coach');
     } else {
       navigate('/new-session', { state: { mode } });
     }
@@ -90,7 +92,7 @@ const Dashboard = () => {
       <h2 id="navButtonsHeader">Start A New Session</h2>
 
       <div className="navButtons">
-        {['Official Game', 'Pickup Game', 'Practice Session', 'Shooting Drill', 'View Past Sessions', 'View Rankings'].map((mode) => (
+        {['Official Game', 'Pickup Game', 'Practice Session', 'Shooting Drill', 'View Past Sessions', 'View Rankings', 'Ask Coach Max'].map((mode) => (
           <button key={mode} onClick={() => handleClick(mode)}>
             {mode}
           </button>

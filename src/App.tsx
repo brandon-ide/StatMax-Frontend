@@ -11,6 +11,7 @@ import Stats from "./pages/Stats";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UpdateSession from "./pages/UpdateSession";
 import Rankings from "./pages/Rankings";
+import CoachChat from "./pages/CoachChat";
 
 const App: FC = () => {
   return (
@@ -71,6 +72,15 @@ const App: FC = () => {
           element={
             <ProtectedRoute>
               <Rankings />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/coach"
+          element={
+            <ProtectedRoute>
+              <CoachChat />
             </ProtectedRoute>
           }
         />

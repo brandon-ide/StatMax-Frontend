@@ -438,6 +438,10 @@
   background-color: #1f1f1f;
 }
 
+.sessionListHeader {
+  padding-bottom: 20px;
+}
+
 .sessionItem {
   display: flex;
   justify-content: center;
@@ -628,4 +632,110 @@
 .errorMessage {
   margin-top: -50px;
   text-align: center;
+}
+
+/* ---- COACH MAX CHAT CSS DESKTOP & MOBILE ---- */
+
+.coachChatPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.coachHeading {
+  margin-bottom: 10px;
+}
+
+.chatWindow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  height: 70vh;
+  overflow-y: auto;
+  background-color: #111;
+  border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+.chatWindow::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatWindow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatWindow::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.chatWindow::-webkit-scrollbar-thumb:hover {
+  background-color: #666;
+}
+
+.coachMessage,
+.userMessage {
+  max-width: 60%;
+  padding: 12px 16px;
+  border-radius: 15px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.userMessage {
+  align-self: flex-start;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.coachMessage {
+  align-self: flex-end;
+  background-color: #001346;
+  color: white;
+}
+
+.coachLoading {
+  align-self: flex-end;
+  background-color: #444;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: white;
+}
+
+.chatInputContainer {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.userChatInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.chatSendButton {
+  padding: 10px 24px;
+  background-color: #fc9e23;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #1f1f1f;
+  font-weight: bold;
+}
+
+.chatSendButton:hover {
+  background-color:#d87a00;
+  border-color: #d87a00;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
