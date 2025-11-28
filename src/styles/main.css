@@ -168,7 +168,6 @@
     }
 
     .loginForm, .signupForm, .forgotPasswordForm, .resetPasswordForm {
-      position: absolute;
       height: 100dvh;
       width: 100%;
     }
