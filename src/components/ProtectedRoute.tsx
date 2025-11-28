@@ -12,7 +12,7 @@ const authContext = useContext(AuthContext);
 const { user } = authContext;
 
 
-  if (!user) return <Navigate to="/dashboard" replace />;
+  if (!user) return <Navigate to="/login" replace />;
 
   return <>{children}</>;
 };
