@@ -4,6 +4,58 @@ StatMax is a full-stack basketball performance tracker designed for players who 
 
 Built with a modern MERN + TypeScript architecture, StatMax focuses on speed, simplicity, and meaningful insights.
 
+🏀 AI Coach Max — Your Personal Basketball Development Assistant
+
+StatMax includes AI Coach Max, an intelligent training assistant designed to help players understand their performance, improve their game, and stay motivated.
+
+🔥 What Coach Max Does
+
+Coach Max analyzes a player’s real basketball session data—including totals, trends, and recent performances—and uses that information to provide:
+
+Personalized coaching tips
+
+Motivational messages based on your actual stats
+
+Actionable feedback tailored to your strengths and weaknesses
+
+Performance insights across points, rebounds, assists, steals, and blocks
+
+Session-specific breakdowns that help you track progress over time
+
+💡 How It Works
+
+When a user sends Coach Max a message, StatMax:
+
+Gathers the player’s full historical and recent session data
+
+Builds a structured prompt for the AI
+
+Sends it to Max (powered by OpenAI’s API)
+
+Returns a short, specific, performance-driven response
+
+Displays the full chat exchange in a clean interface
+
+🤝 What Makes Coach Max Special
+
+He never gives generic advice — everything is based on your stats
+
+He stays strictly focused on basketball development
+
+He avoids unrealistic claims, unsafe advice, or medical guidance
+
+He keeps feedback short, positive, and immediately useful
+
+✨ Example Use Cases
+
+“How can I improve my rebounding based on my last few sessions?”
+
+“What should I focus on next time?”
+
+“Where am I improving the most right now?”
+
+Coach Max turns your raw stats into meaningful guidance — making StatMax not just a tracker, but a real training partner.
+
 🚀 Features
 📊 Create & Track Sessions
 
