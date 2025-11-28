@@ -6,6 +6,8 @@
   }
   
   body {
+    height: 100vh;
+    width: 100vw;
     background-color: #c9c9c9;
     color: #ffffff;
     font-family: 'Helvetica Neue', Arial, sans-serif;
