@@ -45,8 +45,8 @@ const { user } = authContext;
 
     const method = existingSession ? 'PUT' : 'POST';
     const url = existingSession
-      ? `http://localhost:5050/api/sessions/${existingSession._id}`
-      : 'http://localhost:5050/api/sessions';
+      ? `https://statmax-backend.onrender.com/api/sessions/${existingSession._id}`
+      : 'https://statmax-backend.onrender.com/api/sessions';
 
     try {
       const res = await fetch(url, {

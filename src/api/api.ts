@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5050/api";
+const BASE_URL = "https://statmax-backend.onrender.com/api";
 
 export interface UserLoginResponse {
   token: string;

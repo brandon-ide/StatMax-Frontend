@@ -37,7 +37,7 @@ const { user } = authContext;
   const handleDelete = async () => {
     if (!user) return;
     try {
-      await fetch(`http://localhost:5050/api/sessions/${session._id}`, {
+      await fetch(`https://statmax-backend.onrender.com/api/sessions/${session._id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${user.token}` },
       });

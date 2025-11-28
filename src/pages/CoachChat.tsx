@@ -27,7 +27,7 @@ const authContext = useContext(AuthContext);
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5050/api/coach", {
+      const response = await fetch("https://statmax-backend.onrender.com/api/coach", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

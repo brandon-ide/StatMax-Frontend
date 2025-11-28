@@ -52,7 +52,7 @@ const Dashboard = () => {
     const fetchSessions = async () => {
       if (!user) return;
       try {
-        const res = await fetch('http://localhost:5050/api/sessions', {
+        const res = await fetch('https://statmax-backend.onrender.com/api/sessions', {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         const data: Session[] = await res.json();

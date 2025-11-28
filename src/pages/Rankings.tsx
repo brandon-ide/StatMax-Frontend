@@ -38,7 +38,7 @@ const [activeStat, setActiveStat] = useState<StatKey>("points");
     const fetchRankings = async () => {
       if (!user) return;
       try {
-        const res = await fetch("http://localhost:5050/api/rankings", {
+        const res = await fetch("https://statmax-backend.onrender.com/api/rankings", {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         const data: RankingsData = await res.json();
