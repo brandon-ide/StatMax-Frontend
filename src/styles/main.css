@@ -172,19 +172,6 @@
 
 /* ---- DASHBOARD CSS DESKTOP & MOBILE ---- */
 
-.dashboardHeader {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  padding-left: 50px;
-  padding-right: 50px;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .dashboardLogoWhite {
   width: 120px;
 }
@@ -219,9 +206,8 @@
 .chartContainer {
   color: #ffffff;
   background-color: #1f1f1f;
-  padding-top: 120px;
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 60px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -531,6 +517,7 @@
 @media only screen and (max-width: 720px) {
 
   #newSessionTop {
+    text-align: center;
     font-size: 14pt;
   }
 

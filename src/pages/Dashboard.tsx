@@ -66,7 +66,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <div className="dashboardHeader">
+      <div className="newSessionHeader">
         <img src={logowhite} alt="StatMax Logo White" className="dashboardLogoWhite" />
         <h1 className="dashTitle">{user?.username}'s Stat Dashboard</h1>
         <button className="logoutButton" onClick={handleLogout}>Logout</button>
