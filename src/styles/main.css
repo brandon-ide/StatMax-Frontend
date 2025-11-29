@@ -6,9 +6,7 @@
   }
   
   html, body {
-    height: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
     background-color: #c9c9c9;
     color: #ffffff;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -57,7 +55,7 @@
 
   .login, .signup, .forgotPassword, .resetPassword {
     display: flex;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     right: 0;
   }
@@ -68,7 +66,7 @@
     background-color: #1f1f1f;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 40%;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
@@ -168,6 +166,7 @@
     }
 
     .loginForm, .signupForm, .forgotPasswordForm, .resetPasswordForm {
+      position: absolute;
       height: 100dvh;
       width: 100%;
     }
