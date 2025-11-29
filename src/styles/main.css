@@ -7,7 +7,7 @@
   
   html, body {
     height: calc(var(--vh, 1vh) * 100);
-    background-color: #c9c9c9;
+    background-color: #1f1f1f;
     color: #ffffff;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-weight: bold;
